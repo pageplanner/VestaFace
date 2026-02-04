@@ -1,0 +1,140 @@
+VestaFace ArcFace V2.31 - Deployment Guide
+VestaFace is an automated reception system that combines high-accuracy ArcFace recognition with the Vestaboard Local API. It identifies visitors and pushes personalized greetings to your Vestaboard in real-time.
+
+1. Prerequisites
+Hardware
+PC/Laptop: Windows 10/11 (Recommended).
+
+Camera: USB Webcam or integrated laptop camera.
+
+Vestaboard: Must have the Local API enabled and be on the same network as the PC.
+
+Software
+Python 3.10 to 3.12: (Important: Do not use 3.13 yet, as some libraries like insightface may have compatibility issues with the newest releases).
+
+Microsoft Visual C++ 14.0 or greater: Required for building the insightface and onnxruntime libraries.
+
+2. Environment Setup
+Install Python
+Download Python from python.org.
+
+Crucial: During installation, check the box that says "Add Python to PATH".
+
+Install Required Libraries
+Open your terminal or PowerShell and run the following command to install all necessary dependencies:
+
+Bash
+pip install cv2-python numpy requests insightface onnxruntime tkinter
+3. Configuration Files
+The system requires two small text files in the root folder to communicate with your Vestaboard.
+
+Create vb.url
+Open Notepad.
+
+Paste the Local API URL of your board (e.g., http://192.168.6.97:7000/local-api/message).
+
+Save the file exactly as vb.url in the project folder.
+
+Create vb.key
+Open Notepad.
+
+Paste your Local API Key (the long string of characters provided by Vestaboard when you enabled the Local API).
+
+Save the file exactly as vb.key in the project folder.
+
+4. Starting the System
+Manual Start
+Run the script directly from your terminal:
+
+Bash
+python VestaFace.py
+Auto-Start (Deployment Mode)
+Double-click the run_vestaface.bat file you created.
+
+To have it start when the computer turns on, place a shortcut to this .bat file in your Windows Startup folder (shell:startup).
+
+5. Using the System
+Initial Camera Selection
+When the program starts, it will show a grid of available cameras. Left-click on the camera feed you wish to use.
+
+Recognizing Known Visitors
+When a face is matched, the board will flip to a greeting: HELLO [NAME] ... WELCOME TO THE VESTASCRIPTERS HEADQUARTERS.
+
+Terminal logs will show the similarity score (how sure the AI is).
+
+Enrolling New Visitors
+When an unknown face is detected, the footer will turn orange and display "NEW VISITOR:".
+
+Click the window to focus it, type the visitor's name, and press Enter.
+
+The name is saved instantly to face_db.npz.
+
+Self-Correction: If the person is identified while you are typing, the prompt will automatically vanish to avoid duplicates.
+
+Watchdog: If no name is entered within 30 seconds, the prompt clears itself to continue scanning.
+
+Admin Dashboard
+Click the ADMIN button in the top-left corner to open the Management Dashboard.
+
+View lifetime visit counts, enrollment status, and a scrollable history log.
+
+Use RUN MANUAL BACKUP to save a timestamped copy of your database to the backups folder.
+
+
+
+
+
+
+
+
+
+
+
+
+==========================
+
+Install Visual Studio Build Tools: Download the Visual Studio Community installer and select "Desktop development with C++."
+
+install cmake
+        - cmake.org (this is how windows users should get cmake)
+        - apt install cmake (for Ubuntu or Debian based systems)
+        - yum install cmake (for Redhat or CenOS based systems)
+
+python -m pip install setuptools
+pip install face_recognition opencv-python
+pip install git+https://github.com/ageitgey/face_recognition_models
+pip install git+https://github.com/ageitgey/face_recognition_models
+python -m pip install git+https://github.com/ageitgey/face_recognition_models
+
+
+
+Since Python 3.13 is having "bleeding edge" issues with dlib, we will create a 3.11 environment just for this project.
+
+Install Python 3.11 (Side-by-Side): Go to the Python Website and download the "Windows installer (64-bit)". During installation, do NOT check "Add Python to PATH" (this prevents it from interfering with your 3.13 setup).
+
+Create the Virtual Environment: Open your terminal in C:\Users\ben\Desktop\Vestaboard\VestaFace and run:
+
+PowerShell
+# Tell the 3.11 launcher to create a folder called 'env'
+py -3.11 -m venv venv
+Activate it:
+
+PowerShell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.\venv\Scripts\activate
+(You will see (venv) appear in front of your command prompt. This means anything you do now stays inside this folder.)
+
+Install the Libraries in the Bubble:
+
+PowerShell
+python -m pip install --upgrade pip
+python -m pip install face-recognition opencv-python
+
+
+
+ArcFace Version
+===========================
+pip install insightface onnxruntime-gpu onnxruntime      # onnxruntime is for CPU instead of GPU
+pip install opencv-python numpy
+python -m pip uninstall opencv-python opencv-python-headless
+python -m pip install opencv-python
