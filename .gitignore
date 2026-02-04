@@ -1,0 +1,12 @@
+*pass
+*user
+*gz
+*key
+*url
+*web
+*api
+visitor_photos/
+venv/
+__pycache__/
+*.pkl
+visitor_log.txt
