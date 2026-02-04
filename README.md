@@ -1,4 +1,4 @@
-# VestaFace ArcFace V2.35 - Deployment Guide
+# VestaFace V2.35 - Deployment Guide
 
 VestaFace is an automated reception system combining **ArcFace** facial recognition with the **Vestaboard Local API**.
 
