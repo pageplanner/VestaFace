@@ -13,11 +13,11 @@ from insightface.app import FaceAnalysis
 from datetime import datetime
 
 # --- CONFIGURATION ---
-RE_GREET_DELAY = 60         # Seconds before re-greeting same person
-BOARD_RESET_DELAY = 30      # Seconds to show welcome before standby
-SIMILARITY_THRESHOLD = 0.45 # Recognition sensitivity
-ENROLL_TRIGGER_SIZE = 80    # Min face width to trigger new visitor prompt
-PROMPT_TIMEOUT = 30         # Auto-cancel prompt if no typing
+RE_GREET_DELAY = 60         
+BOARD_RESET_DELAY = 30      
+SIMILARITY_THRESHOLD = 0.45 
+ENROLL_TRIGGER_SIZE = 80    
+PROMPT_TIMEOUT = 30         
 DATA_FILE = "face_db.npz"
 LOG_FILE = "visitor_log.txt"
 BACKUP_DIR = "backups"
@@ -194,7 +194,7 @@ class VestaFace:
                 if sims[idx] > SIMILARITY_THRESHOLD:
                     name = self.known_names[idx]; is_recognized = True
                     if self.is_registering:
-                        print_log(f"[CORRECTION] Found match for {name}. Prompt cancelled.")
+                        print_log(f"[CORRECTION] Match found for {name}. Prompt cancelled.")
                         self.is_registering = False; self.typing_buffer = ""
                     now = time.time()
                     if not self.is_registering: self.status_msg = f"RECOGNIZED: {name.upper()}"
