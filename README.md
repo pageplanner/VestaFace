@@ -9,7 +9,7 @@ VestaFace is an automated reception system combining **ArcFace** facial recognit
   * Run the Visual Studio Community installer and select "Desktop development with C++."
 * **Python Libraries**: Install via pip:
   * `python3 -m pip3 install --upgrade pip`
-  * `pip3 install cv2-python numpy requests insightface onnxruntime tkinter`
+  * `pip3 install cv2-python numpy requests insightface onnxruntime tkinter pywin32`
 
 ## 2. Configuration Files
 The script looks for two files in the same folder as the script:
